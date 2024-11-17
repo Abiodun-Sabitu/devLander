@@ -26,7 +26,7 @@ function App() {
           <header>
             <li>
               <TbBriefcaseFilled fill="#7ee7ff" />
-              <span> Portfolio</span>{" "}
+              <span>Portfolio</span>{" "}
             </li>
             <li
               onClick={() => {
