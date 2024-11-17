@@ -1,0 +1,297 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+
+  background-color: #1b1e23;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+main {
+  margin: 40px 50px;
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  color: whitesmoke;
+  gap: 24px;
+  font-size: medium;
+}
+
+header li {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+header li {
+  list-style: none;
+}
+
+.devPhoto {
+  width: 210px;
+  height: 220px;
+}
+
+.name_card {
+  color: rgb(202, 199, 199);
+}
+h4 {
+  color: rgb(202, 199, 199);
+  margin: 25px 0 5px 0;
+}
+
+a {
+  text-decoration: none;
+  color: whitesmoke;
+  font-size: small;
+}
+
+a:hover,
+a:visited,
+a:active {
+  color: whitesmoke;
+}
+
+.link_wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+}
+.link_wrapper a {
+  margin: 3px;
+  color: #7ee7ff;
+}
+
+.link_wrapper li {
+  display: flex;
+  font-size: small;
+}
+.skill-badge {
+  background-color: #1b1e23;
+  padding: 2px 8px 2px 8px;
+  border-radius: 4px;
+
+  box-shadow: 0 4px 6px rgb(27, 30, 35),
+    /* Soft shadow */ 0 1px 3px rgba(0, 0, 0, 0.08); /* Slightly darker base shadow */
+
+  /* Transition for a subtle hover effect */
+  transition: transform 0.2s, box-shadow 0.2s;
+  color: rgba(245, 245, 245, 0.858);
+  border: 0.5px solid rgba(245, 245, 245, 0.785);
+}
+
+.skill-badge:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15), 0 2px 5px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  background-color: whitesmoke;
+  color: #000;
+}
+
+.overlay-transparent-to-semi {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(17, 19, 23, 0); /* Start fully transparent */
+  z-index: 2; /* Above elements while semi-transparent */
+  pointer-events: none; /* Allow clicks through when fully transparent */
+  animation: transparentToSemi 3s ease-in-out forwards;
+}
+
+@keyframes transparentToSemi {
+  0% {
+    background-color: rgba(17, 19, 23, 0); /* Fully transparent */
+    pointer-events: none; /* Allow interaction with elements */
+  }
+  99% {
+    background-color: rgba(
+      17,
+      19,
+      23,
+      0.8
+    ); /* Transitioning to semi-transparent */
+    pointer-events: none; /* No interaction during animation */
+  }
+  100% {
+    background-color: rgba(17, 19, 23, 0.8); /* Fully semi-transparent */
+    pointer-events: auto; /* Block interaction when semi-transparent */
+  }
+}
+
+.overlay-semi-to-transparent {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(17, 19, 23, 0.7); /* Start semi-transparent */
+  z-index: 2; /* Above elements during animation */
+  pointer-events: auto; /* Block interaction when visible */
+  animation: semiToTransparent 4s ease-in-out forwards;
+}
+
+@keyframes semiToTransparent {
+  0% {
+    background-color: rgba(17, 19, 23, 0.7); /* Fully semi-transparent */
+    pointer-events: auto; /* Block interaction */
+  }
+  99% {
+    background-color: rgba(
+      17,
+      19,
+      23,
+      0
+    ); /* Transitioning to fully transparent */
+    pointer-events: none; /* Allow interaction just before animation ends */
+  }
+  100% {
+    background-color: rgba(17, 19, 23, 0); /* Fully transparent */
+    pointer-events: none; /* Allow interaction after animation */
+    z-index: 0; /* Send the overlay behind elements */
+  }
+}
+
+.contact_form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -60%); /* Start slightly above the center */
+  width: 85%; /* Responsive width */
+  max-width: 400px;
+  padding: 20px 45px;
+  background-color: #11131770;
+  gap: 12px;
+  opacity: 0; /* Start fully transparent */
+  animation: slideIn 1.2s ease-out forwards; /* Trigger animation */
+  z-index: 4;
+}
+
+/* Keyframes for sliding and fading in */
+@keyframes slideIn {
+  0% {
+    transform: translate(-50%, -80%); /* Start further up */
+    opacity: 0; /* Invisible */
+  }
+  60% {
+    transform: translate(-50%, -55%); /* Overshoot a little */
+    opacity: 0.8; /* Semi-visible */
+  }
+  100% {
+    transform: translate(-50%, -50%); /* Final position */
+    opacity: 1; /* Fully visible */
+  }
+}
+
+.contact_form input {
+  padding: 14px;
+  height: 19px;
+  background-color: whitesmoke;
+  border-radius: 8px;
+  border: none;
+  color: grey;
+}
+
+.contact_form input:focus {
+  box-shadow: none;
+  outline: 2px solid #7ee7ff;
+  color: grey;
+  cursor: pointer;
+}
+
+.contact_form textarea {
+  padding: 14px;
+  background-color: whitesmoke;
+  border-radius: 8px;
+  color: grey;
+  border: none;
+}
+
+.contact_form textarea:focus {
+  box-shadow: none;
+  outline: 2px solid #7ee7ff;
+}
+.contact_form button {
+  border-radius: 8px;
+  background-color: #7ee7ff;
+  height: 50px;
+  color: #1b1e23;
+  font-size: larger;
+  cursor: pointer;
+}
+
+.contact_form button:active {
+  border-radius: 8px;
+  background-color: #7ee7ff;
+  height: 48px;
+  transition: ease-in-out;
+  color: #1b1e23;
+  font-size: larger;
+  cursor: pointer;
+}
+
+.close_btn {
+  display: flex;
+  justify-content: end;
+  color: #7ee7ff;
+  margin-bottom: 15px;
+  cursor: pointer;
+}
+.close_btn:hover {
+  display: flex;
+  justify-content: end;
+  color: #7ee7ff;
+  margin-bottom: 15px;
+  cursor: pointer;
+}
+
+/* Error styling */
+.error_message {
+  color: red;
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Success styling */
+.success_message {
+  color: rgb(3, 174, 3);
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  align-items: center;
+  color: whitesmoke;
+}
+
+@media screen and (max-width: 640px) {
+  header {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    justify-content: center;
+    margin-bottom: 50px;
+  }
+
+  .centralize_content {
+    text-align: center;
+  }
+
+  .link_wrapper {
+    justify-content: center;
+  }
+}
