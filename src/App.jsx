@@ -8,10 +8,25 @@ import { FaRegCircleCheck } from "react-icons/fa6";
 import { skills } from "./data";
 import { TbBriefcaseFilled } from "react-icons/tb";
 import { MdEmail } from "react-icons/md";
+
 import ContactForm from "./ContactForm";
+import PortfolioModal from "./PortfolioModal";
+
 
 function App() {
   const [isContactFormVisible, setContactFormVisibility] = useState(false);
+  const [isPortfolioModalOpen, setPortfolioModalOpen] = useState(false);
+  const [portfolioModalClosing, setPortfolioModalClosing] = useState(false);
+
+  const handlePortfolioClose = () => {
+    setPortfolioModalClosing(true);
+    // Hide the modal after both modal and overlay animations complete
+    setTimeout(() => {
+      setPortfolioModalOpen(false);
+      setPortfolioModalClosing(false);
+    }, 5200); // 1.2s modal fade + 4s overlay fade
+  };
+
   return (
     <>
       <main>
@@ -24,7 +39,10 @@ function App() {
         ></div>
         <div>
           <header>
-            <li>
+            <li
+              style={{ cursor: "pointer" }}
+              onClick={() => setPortfolioModalOpen(true)}
+            >
               <TbBriefcaseFilled fill="#7ee7ff" />
               <span>Portfolio</span>{" "}
             </li>
@@ -37,6 +55,7 @@ function App() {
               <span>Contact Me</span>
             </li>
           </header>
+          {/* ...existing code... */}
           <div className="centralize_content">
             <img src={devPhoto} alt="Devs's Photo" className="devPhoto" />
           </div>
@@ -94,6 +113,11 @@ function App() {
         <ContactForm
           isContactFormVisible={isContactFormVisible}
           setContactFormVisibility={setContactFormVisibility}
+        />
+        <PortfolioModal
+          isOpen={isPortfolioModalOpen}
+          isClosing={portfolioModalClosing}
+          onClose={handlePortfolioClose}
         />
       </main>
     </>

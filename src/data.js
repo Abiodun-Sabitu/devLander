@@ -31,7 +31,7 @@ export const skills = {
     "Bootstrap",
     "UI Libraries",
   ],
-  backendStack: ["Node.js", "Express.js", "Prisma.js", "MongoDB", "PostgreSQL"],
+  backendStack: ["Node.js", "Express.js", "Mongoose", "MongoDB", "Prisma", "PostgreSQL"],
   tools: [
     "Figma",
     "Photoshop",

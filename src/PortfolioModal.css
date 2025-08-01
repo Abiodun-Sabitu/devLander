@@ -1,0 +1,232 @@
+/* Portfolio Modal Styles */
+
+
+
+.portfolio-modal {
+  background: #18181b;
+  color: #fff;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+  width: 85%;
+  max-width: 80%;
+  padding: 2rem 2rem 1.5rem 2rem;
+  box-sizing: border-box;
+  max-height: 85vh;
+  overflow-y: auto;
+}
+
+/* Custom scrollbar styling */
+.portfolio-modal::-webkit-scrollbar {
+  width: 8px;
+}
+
+.portfolio-modal::-webkit-scrollbar-track {
+  background: #1a1a1a;
+  border-radius: 4px;
+}
+
+.portfolio-modal::-webkit-scrollbar-thumb {
+  background: #3a3a3a;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.portfolio-modal::-webkit-scrollbar-thumb:hover {
+  background: #4a4a4a;
+}
+
+/* Firefox scrollbar styling */
+.portfolio-modal {
+  scrollbar-width: thin;
+  scrollbar-color: #2d2d2d #1a1a1a;
+}
+
+/* Close button styling */
+
+/* Modal fade-out animation */
+@keyframes slideOut {
+  0% {
+    transform: translate(-50%, -50%);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -80%);
+    opacity: 0;
+  }
+}
+
+/* Delayed overlay fade-out for portfolio modal */
+@keyframes overlayDelayedFadeOut {
+  0% {
+    background-color: rgba(17, 19, 23, 0.8);
+    pointer-events: auto;
+  }
+  23% {
+    background-color: rgba(17, 19, 23, 0.8);
+    pointer-events: auto;
+  }
+  100% {
+    background-color: rgba(17, 19, 23, 0);
+    pointer-events: none;
+    z-index: 0;
+  }
+}
+
+.overlay-portfolio-closing {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(17, 19, 23, 0.8);
+  z-index: 2;
+  pointer-events: auto;
+  animation: overlayDelayedFadeOut 5.2s ease-in-out forwards;
+}
+
+.close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1.2rem;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #7ee7ff;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.close-btn:hover {
+  color: #ffb86b;
+}
+
+
+.projects-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.2rem;
+  margin-top: 1.2rem;
+}
+
+.projects-list:hover .project-card:not(:hover) {
+  opacity: 0.6;
+  transform: scale(0.98);
+}
+
+.project-card {
+  background: #23232b;
+  border-radius: 10px;
+  padding: 1rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+ /* border: 1px solid rgba(126, 231, 255, 0.3); */
+  background: #2a2a35;
+  opacity: 1;
+}
+
+.project-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.project-link {
+  color: #7ee7ff;
+  font-weight: bold;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.project-link:hover {
+  color: #ffb86b;
+  text-decoration: underline;
+}
+
+.project-tag {
+  padding: 0.15em 0.6em;
+  border-radius: 999px;
+  font-size: 0.75em;
+  font-weight: 600;
+  background: #18181b;
+  margin-left: 0.5em;
+  box-shadow: 0 0 0 2px rgba(0,0,0,0.05);
+  white-space: nowrap;
+  flex-shrink: 0;
+  
+}
+
+.project-tech {
+  font-size: 0.95em;
+  color: #a1a1aa;
+}
+
+.project-desc {
+  font-size: 0.85em;
+  color: #e0e0e0d5;
+  line-height: 1.4;
+}
+
+
+
+/* Responsive breakpoints for 4 → 3 → 2 → 1 layout */
+@media (max-width: 1200px) {
+  .projects-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .portfolio-modal {
+    width: 95%;
+    padding: 1.5rem 1rem 1rem 1rem;
+  }
+  .projects-list {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  .close-btn {
+    top: 0.5rem;
+    right: 0.8rem;
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .portfolio-modal {
+    width: 98%;
+    padding: 1rem 0.75rem 0.75rem 0.75rem;
+  }
+  .projects-list {
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
+  }
+  .project-card {
+    padding: 0.75rem;
+  }
+  .project-tag {
+    font-size: 0.7em;
+    padding: 0.1em 0.5em;
+    margin-left: 0.3em;
+  }
+  .project-header {
+    gap: 0.3rem;
+  }
+  .project-desc {
+    font-size: 0.8em;
+  }
+  .close-btn {
+    top: 0.5rem;
+    right: 0.5rem;
+    font-size: 1.5rem;
+  }
+}
