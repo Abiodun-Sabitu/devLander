@@ -95,6 +95,22 @@ const tagColors = {
 };
 
 export default function PortfolioModal({ isOpen, isClosing, onClose }) {
+  // Analytics function to track project clicks
+  const trackProjectClick = (projectName, projectLink) => {
+    // Google Analytics 4 event tracking
+    if (typeof gtag !== 'undefined') {
+      gtag('event', 'project_click', {
+        'project_name': projectName,
+        'project_url': projectLink,
+        'event_category': 'Portfolio',
+        'event_label': projectName
+      });
+    }
+    
+    // Console log for debugging (remove in production)
+    console.log(`Project clicked: ${projectName} - ${projectLink}`);
+  };
+
   if (!isOpen) return null;
   return (
     <>
@@ -124,7 +140,7 @@ export default function PortfolioModal({ isOpen, isClosing, onClose }) {
         <button className="close-btn" onClick={onClose}>
           &times;
         </button>
-        <h2>Projects</h2>
+        <h2> Projects</h2>
         <div className="projects-list">
           {projects.map((project) => (
             <div className="project-card" key={project.name}>
@@ -132,7 +148,11 @@ export default function PortfolioModal({ isOpen, isClosing, onClose }) {
                 <a
                   href={project.link || "#"}
                   onClick={(e) => {
-                    if (!project.link) e.preventDefault();
+                    if (!project.link) {
+                      e.preventDefault();
+                    } else {
+                      trackProjectClick(project.name, project.link);
+                    }
                   }}
                   target="_blank"
                   rel="noopener noreferrer"

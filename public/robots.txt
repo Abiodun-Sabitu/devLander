@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://abiodun-sabitu.com/sitemap.xml
+
+# Block common bot directories
+Disallow: /admin/
+Disallow: /.git/
+Disallow: /node_modules/
