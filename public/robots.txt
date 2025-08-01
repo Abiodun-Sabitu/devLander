@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://abiodun-sabitu.com/sitemap.xml
+Sitemap: https://abiodunsabitu.com/sitemap.xml
 
 # Block common bot directories
 Disallow: /admin/
