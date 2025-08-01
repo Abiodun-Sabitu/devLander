@@ -1,5 +1,6 @@
 import React from "react";
 import "./PortfolioModal.css";
+import { trackEvent } from "./analytics.js";
 
 const projects = [
   {
@@ -97,15 +98,12 @@ const tagColors = {
 export default function PortfolioModal({ isOpen, isClosing, onClose }) {
   // Analytics function to track project clicks
   const trackProjectClick = (projectName, projectLink) => {
-    // Google Analytics 4 event tracking
-    if (typeof gtag !== 'undefined') {
-      gtag('event', 'project_click', {
-        'project_name': projectName,
-        'project_url': projectLink,
-        'event_category': 'Portfolio',
-        'event_label': projectName
-      });
-    }
+    trackEvent('project_click', {
+      'project_name': projectName,
+      'project_url': projectLink,
+      'event_category': 'Portfolio',
+      'event_label': projectName
+    });
     
     // Console log for debugging (remove in production)
     console.log(`Project clicked: ${projectName} - ${projectLink}`);

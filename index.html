@@ -66,29 +66,6 @@
       ]
     }
     </script>
-    
-    <!-- Google Analytics 4 -->
-    <script>
-      // Load Google Analytics with environment variable support
-      (function() {
-        const GA_ID = import.meta.env.VITE_GOOGLE_ANALYTICS_ID || 'G-XXXXXXXXXX';
-        
-        // Create and load the gtag script
-        const script = document.createElement('script');
-        script.async = true;
-        script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`;
-        document.head.appendChild(script);
-        
-        // Initialize Google Analytics
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', GA_ID);
-        
-        // Make gtag available globally
-        window.gtag = gtag;
-      })();
-    </script>
   </head>
   <body>
     <div id="root"></div>
