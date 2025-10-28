@@ -4,11 +4,18 @@ import { trackEvent } from "./analytics.js";
 
 const projects = [
   {
-    name: "Cabinote",
-    link: "https://cabinote.vercel.app/",
+    name: "Mailer8",
+    link: "https://mailer8-api-1-63x9.onrender.com/api/docs/",
+    tech: "Nodejs, Express, MongoDB, Cron Job",
+    description: "Mailer8 is an automated birthday email system that manages customer details, tracks birthdays, and sends personalized messages using your templates. With role-based access for Super Admins and Admin Staff, it makes every celebration effortless and on time.",
+    tag: "Backend",
+  },
+  {
+    name: "Healthscope",
+    link: "https://healthscope-frontend-development.onrender.com/",
     tech: "React, Tailwind CSS",
     description:
-      "Note-taking app with drag-and-drop support, dark mode, and persistent local storage via custom hooks.",
+      "HealthScope is a world-class digital health content platform empowering millions across Africa and the globe with reliable, accessible health information curated by health professionals.",
     tag: "Frontend",
   },
   {
@@ -20,8 +27,16 @@ const projects = [
     tag: "Backend",
   },
   {
+    name: "Cabinote",
+    link: "https://cabinote.vercel.app/",
+    tech: "React, Tailwind CSS",
+    description:
+      "Note-taking app with drag-and-drop support, dark mode, and persistent local storage via custom hooks.",
+    tag: "Frontend",
+  },
+  {
     name: "GeegPay",
-    link:"https://geegpay-sab.vercel.app/",
+    link: "https://geegpay-sab.vercel.app/",
     tech: "React, Tailwind CSS",
     description:
       "A pixel-perfect Fintech inspired dashboard submitted for the GeegPay Dashboard Design contest on X. Showcases attention to layout, responsiveness, and modern component design using Tailwind CSS.",
@@ -98,13 +113,13 @@ const tagColors = {
 export default function PortfolioModal({ isOpen, isClosing, onClose }) {
   // Analytics function to track project clicks
   const trackProjectClick = (projectName, projectLink) => {
-    trackEvent('project_click', {
-      'project_name': projectName,
-      'project_url': projectLink,
-      'event_category': 'Portfolio',
-      'event_label': projectName
+    trackEvent("project_click", {
+      project_name: projectName,
+      project_url: projectLink,
+      event_category: "Portfolio",
+      event_label: projectName,
     });
-    
+
     // Console log for debugging (remove in production)
     console.log(`Project clicked: ${projectName} - ${projectLink}`);
   };
@@ -138,7 +153,7 @@ export default function PortfolioModal({ isOpen, isClosing, onClose }) {
         <button className="close-btn" onClick={onClose}>
           &times;
         </button>
-        <h2> Projects</h2>
+        <h2>My Projects</h2>
         <div className="projects-list">
           {projects.map((project) => (
             <div className="project-card" key={project.name}>

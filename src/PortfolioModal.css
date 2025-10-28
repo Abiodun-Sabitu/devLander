@@ -142,14 +142,23 @@
 }
 
 .project-link {
-  color: #7ee7ff;
+  color: #7ee7ff !important;
   font-weight: bold;
   text-decoration: none;
   transition: color 0.2s;
 }
+
 .project-link:hover {
-  color: #ffb86b;
+  color: #ffb86b !important;
   text-decoration: underline;
+}
+
+.project-link:visited {
+  color: #7ee7ff !important;
+}
+
+.project-link:active {
+  color: #7ee7ff !important;
 }
 
 .project-tag {
